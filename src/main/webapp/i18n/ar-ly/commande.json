@@ -1,0 +1,28 @@
+{
+  "coviteApp": {
+    "commande": {
+      "home": {
+        "title": "Commandes",
+        "createLabel": "Create a new Commande",
+        "createOrEditLabel": "Create or edit a Commande",
+        "search": "Search for Commande",
+        "notFound": "No Commandes found"
+      },
+      "created": "A new Commande is created with identifier {{ param }}",
+      "updated": "A Commande is updated with identifier {{ param }}",
+      "deleted": "A Commande is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Commande {{ id }}?"
+      },
+      "detail": {
+        "title": "Commande"
+      },
+      "date": "Date",
+      "prix": "Prix",
+      "type": "Type",
+      "typeservice": "Typeservice",
+      "voiture": "Voiture",
+      "position": "Position"
+    }
+  }
+}

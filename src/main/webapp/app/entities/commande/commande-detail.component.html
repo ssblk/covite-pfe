@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="commande">
+            <h2><span jhiTranslate="coviteApp.commande.detail.title">Commande</span> {{ commande.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="coviteApp.commande.date">Date</span></dt>
+                <dd>
+                    <span>{{ commande.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="coviteApp.commande.prix">Prix</span></dt>
+                <dd>
+                    <span>{{ commande.prix }}</span>
+                </dd>
+                <dt><span jhiTranslate="coviteApp.commande.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'coviteApp.Categorie.' + commande.type }}">{{ commande.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="coviteApp.commande.typeservice">Typeservice</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'coviteApp.Service.' + commande.typeservice }}">{{ commande.typeservice }}</span>
+                </dd>
+                <dt><span jhiTranslate="coviteApp.commande.voiture">Voiture</span></dt>
+                <dd>
+                    <div *ngIf="commande.voiture">
+                        <a [routerLink]="['/voiture', commande.voiture?.id, 'view']">{{ commande.voiture?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="coviteApp.commande.position">Position</span></dt>
+                <dd>
+                    <div *ngIf="commande.position">
+                        <a [routerLink]="['/position', commande.position?.id, 'view']">{{ commande.position?.pointarrive }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/commande', commande.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

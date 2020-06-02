@@ -1,0 +1,12 @@
+{
+  "coviteApp": {
+    "Typevehicule": {
+      "null": "",
+      "VOITURE": "VOITURE",
+      "CAMION": "CAMION",
+      "MOTOCYCLETTE": "MOTOCYCLETTE",
+      "AUTOANIMAL": "AUTOANIMAL",
+      "VAN": "VAN"
+    }
+  }
+}

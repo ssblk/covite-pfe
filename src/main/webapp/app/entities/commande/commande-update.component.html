@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-commande-heading" jhiTranslate="coviteApp.commande.home.createOrEditLabel">Create or edit a Commande</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="coviteApp.commande.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker #dateDp="ngbDatepicker" formControlName="date"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="coviteApp.commande.prix" for="field_prix">Prix</label>
+                    <input type="number" class="form-control" name="prix" id="field_prix"
+                           formControlName="prix"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="coviteApp.commande.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" formControlName="type" id="field_type">
+                        <option value="PERSONNE">{{ 'coviteApp.Categorie.PERSONNE' | translate }}</option>
+                        <option value="ANIMAL">{{ 'coviteApp.Categorie.ANIMAL' | translate }}</option>
+                        <option value="PANIERMENAGER">{{ 'coviteApp.Categorie.PANIERMENAGER' | translate }}</option>
+                        <option value="REPAS">{{ 'coviteApp.Categorie.REPAS' | translate }}</option>
+                        <option value="OBJETS">{{ 'coviteApp.Categorie.OBJETS' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="coviteApp.commande.typeservice" for="field_typeservice">Typeservice</label>
+                    <select class="form-control" name="typeservice" formControlName="typeservice" id="field_typeservice">
+                        <option value="TRANSPORT">{{ 'coviteApp.Service.TRANSPORT' | translate }}</option>
+                        <option value="LIVRAISON">{{ 'coviteApp.Service.LIVRAISON' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="coviteApp.commande.voiture" for="field_voiture">Voiture</label>
+                    <select class="form-control" id="field_voiture" name="voiture" formControlName="voiture">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="voitureOption.id === editForm.get('voiture')!.value?.id ? editForm.get('voiture')!.value : voitureOption" *ngFor="let voitureOption of voitures; trackBy: trackById">{{ voitureOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="coviteApp.commande.position" for="field_position">Position</label>
+                    <select class="form-control" id="field_position" name="position" formControlName="position">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="positionOption.id === editForm.get('position')!.value?.id ? editForm.get('position')!.value : positionOption" *ngFor="let positionOption of positions; trackBy: trackById">{{ positionOption.pointarrive }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

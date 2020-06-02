@@ -1,0 +1,9 @@
+{
+  "coviteApp": {
+    "Service": {
+      "null": "",
+      "TRANSPORT": "TRANSPORT",
+      "LIVRAISON": "LIVRAISON"
+    }
+  }
+}
